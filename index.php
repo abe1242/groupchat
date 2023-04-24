@@ -6,6 +6,11 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>HOME</h1>
+    <h1>Group chat</h1>
+    <?php
+        ini_set('display_errors', 'on');
+        
+        include 'recent.php';
+    ?>
 </body>
 </html>
