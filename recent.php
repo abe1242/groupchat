@@ -6,6 +6,7 @@
         FROM messages m
         INNER JOIN users u ON m.user_id = u.id
         INNER JOIN groups g ON m.group_id = g.id
+        ORDER BY m.post_date DESC
         LIMIT 5;
     QUERY;
     $result = $con->query($sql)->fetch_all(MYSQLI_ASSOC);
