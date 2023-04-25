@@ -5,7 +5,7 @@
         SELECT m.id, m.message, m.post_date, u.username, g.name AS groupname
         FROM messages m
         INNER JOIN users u ON m.user_id = u.id
-        INNER JOIN groups g ON m.group_id = g.id
+        INNER JOIN `groups` g ON m.group_id = g.id
         ORDER BY m.post_date DESC
         LIMIT 5;
     QUERY;
