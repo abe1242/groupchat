@@ -1,20 +1,20 @@
 -- Database: `groupchat`
 
-CREATE TABLE `users` (
+CREATE TABLE IF NOT EXISTS `users` (
   `id` int NOT NULL PRIMARY KEY AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
-  `username` varchar(255) NOT NULL,
+  `username` varchar(255) NOT NULL UNIQUE,
   `passwd` varchar(255) NOT NULL
 );
 
-CREATE TABLE `groups` (
+CREATE TABLE IF NOT EXISTS `groups` (
   `id` int NOT NULL PRIMARY KEY AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   `user_id` int NOT NULL,
   FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
 );
 
-CREATE TABLE `messages` (
+CREATE TABLE IF NOT EXISTS `messages` (
   `id` int NOT NULL PRIMARY KEY AUTO_INCREMENT,
   `message` text NOT NULL,
   `post_date` datetime NOT NULL,
@@ -22,4 +22,9 @@ CREATE TABLE `messages` (
   `user_id` int NOT NULL,
   FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
   FOREIGN KEY (`group_id`) REFERENCES `groups` (`id`)
+);
+
+CREATE TABLE IF NOT EXISTS `categories` (
+  `id` int NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL UNIQUE
 );

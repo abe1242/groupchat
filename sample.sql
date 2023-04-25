@@ -1,0 +1,33 @@
+INSERT INTO `users` (`name`, `username`, `passwd`) VALUES
+("John Doe", "jdoe", "password1"),
+("Jane Smith", "jsmith", "abc123"),
+("Michael Johnson", "mjohnson", "p@ssw0rd"),
+("Emily Brown", "ebrown", "secret"),
+("David Lee", "dlee", "123456"),
+("Sarah Williams", "swilliams", "mypassword"),
+("Robert Davis", "rdavis", "qwerty"),
+("Laura Jones", "ljones", "ilovecats"),
+("Kevin Wilson", "kwilson", "football"),
+("Rachel Green", "rgreen", "friends"),
+("Adam Wright", "awright", "987654"),
+("Lisa Taylor", "ltaylor", "welcome1"),
+("Brandon Martin", "bmartin", "hello123"),
+("Jessica Rodriguez", "jrodriguez", "jessie12"),
+("Steven White", "swhite", "0password");
+
+INSERT INTO `categories` (`id`, `name`) VALUES
+(1, "Cooking"),
+(2, "Sports"),
+(3, "Movies"),
+(4, "Travel"),
+(5, "Fitness"),
+(6, "Photography"),
+(7, "Music"),
+(8, "Politics"),
+(9, "Gaming"),
+(10, "Books"),
+(11, "Fashion"),
+(12, "Technology"),
+(13, "Entrepreneurship"),
+(14, "Art"),
+(15, "Science");
