@@ -15,19 +15,31 @@ INSERT INTO `users` (`name`, `username`, `passwd`) VALUES
 ("Jessica Rodriguez", "jrodriguez", "jessie12"),
 ("Steven White", "swhite", "0password");
 
-INSERT INTO `categories` (`id`, `name`) VALUES
-(1, "Cooking"),
-(2, "Sports"),
-(3, "Movies"),
-(4, "Travel"),
-(5, "Fitness"),
-(6, "Photography"),
-(7, "Music"),
-(8, "Politics"),
-(9, "Gaming"),
-(10, "Books"),
-(11, "Fashion"),
-(12, "Technology"),
-(13, "Entrepreneurship"),
-(14, "Art"),
-(15, "Science");
+INSERT INTO `groups` (`id`, `name`, `user_id`) VALUES
+(1, "Cooking", 7),
+(2, "Sports", 11),
+(3, "Movies", 8),
+(4, "Travel", 5),
+(5, "Fitness", 6),
+(6, "Photography", 6),
+(7, "Music", 9),
+(8, "Politics", 15),
+(9, "Gaming", 6),
+(10, "Books", 9),
+(11, "Fashion", 6),
+(12, "Technology", 10),
+(13, "Entrepreneurship", 1),
+(14, "Art", 10),
+(15, "Science", 4);
+
+INSERT INTO `messages` (`message`, `post_date`, `group_id`, `user_id`) VALUES
+("Hi everyone, I'm new here!", "2023-04-20 09:34:12", 2, 8),
+("What's everyone cooking today?", "2023-04-20 11:22:55", 1, 3),
+("Just finished watching the latest Avengers movie.", "2023-04-20 15:45:02", 3, 9),
+("I'm planning a trip to Japan, any tips?", "2023-04-21 10:11:33", 2, 1),
+("Just got back from a 5K run, feeling great!", "2023-04-21 16:18:22", 5, 13),
+("Check out this amazing sunset I captured!", "2023-04-22 08:57:41", 4, 12),
+("What's your favorite type of music?", "2023-04-22 12:01:14", 3, 7),
+("What do you think about the recent political events?", "2023-04-23 09:15:02", 5, 6),
+("Just finished playing the latest game, it's amazing!", "2023-04-23 15:27:19", 4, 10),
+("What's the best book you've read lately?", "2023-04-24 11:42:50", 1, 4);

@@ -1,0 +1,63 @@
+body {
+    background-color: #eee;
+    font-family: 'Ubuntu';
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.groups {
+    background-color: white;
+    border-radius: 10px;
+    border: 1px solid black;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.171);
+    overflow: hidden;
+    margin-bottom: 100px;
+}
+
+.group-details {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid black;
+    padding: 15px;
+    transition: 500ms;
+}
+
+.group-details:hover {
+    transform: translate(-8px, -8px);
+    background-color: #ddd;
+}
+
+.group-title {
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.group-logo {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    background-color: black;
+    box-shadow: 2px 2px 5px #9c9c9c;
+    border-radius: 50%;
+    margin-right: 20px;
+    overflow: hidden;
+}
+
+img {
+    width: 100%;
+    height: 100%;
+}
+
+.group-name {
+    font-size: 20px;
+}
+
+.group-owner {
+    color: #4e4e4e;
+}
