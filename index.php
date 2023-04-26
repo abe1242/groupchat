@@ -9,32 +9,36 @@
 <body>
     <div class="container">
         <?php
-            ini_set('display_errors', 'on');
+            // ini_set('display_errors', 'on');
             
             include 'config.php';
             
             $sql = <<<QUERY
-                SELECT `groups`.`name`, `users`.`username` FROM `groups`
-                INNER JOIN `users` ON `groups`.`user_id` = `users`.`id`;
+                SELECT `groups`.`name`, `groups`.`id`, `users`.`username` FROM `groups`
+                INNER JOIN `users` ON `groups`.`user_id` = `users`.`id`
+                ORDER BY `groups`.`name`;
             QUERY;
             $result = $con->query($sql)->fetch_all(MYSQLI_ASSOC);
+
+            $con->close();
         ?>
 
-        <header>
-            <h1>Group chat</h1>
-        </header>
+        <?php include "header.php" ?>
+
         <h2>TOPICS</h2>
         <div class="groups">
             <?php foreach ($result as $row): ?>
-            <div class="group-details">
-                <div class="group-title">
-                    <span class="group-logo">
-                        <img src="https://source.unsplash.com/random/50x50/?<?= $row['name']?>">
-                    </span>
-                    <span class="group-name"><?= $row['name'] ?></span>
+            <a href="group.php?id=<?= $row['id']?>">
+                <div class="group-details">
+                    <div class="group-title">
+                        <span class="group-logo">
+                            <img src="https://source.unsplash.com/random/50x50/?<?= $row['name']?>">
+                        </span>
+                        <span class="group-name"><?= $row['name'] ?></span>
+                    </div>
+                    <span class="group-owner">@<?= $row['username'] ?></span>
                 </div>
-                <span class="group-owner">@<?= $row['username'] ?></span>
-            </div>
+            </a>
             <?php endforeach ?>
         </div>
     </div>
