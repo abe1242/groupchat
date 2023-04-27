@@ -36,7 +36,7 @@
                         </span>
                         <span class="group-name"><?= $row['name'] ?></span>
                     </div>
-                    <span class="group-owner">@<?= $row['username'] ?></span>
+                    <a href="deletegroup.php?id=<?= $row['id'] ?>"><button>Delete</button></a>
                 </div>
             </a>
             <?php endforeach ?>

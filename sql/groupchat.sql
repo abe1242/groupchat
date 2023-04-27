@@ -11,7 +11,7 @@ CREATE TABLE IF NOT EXISTS `groups` (
   `id` int NOT NULL PRIMARY KEY AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   `user_id` int NOT NULL,
-  FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
+  FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS `messages` (
@@ -20,8 +20,8 @@ CREATE TABLE IF NOT EXISTS `messages` (
   `post_date` datetime NOT NULL,
   `group_id` int NOT NULL,
   `user_id` int NOT NULL,
-  FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
-  FOREIGN KEY (`group_id`) REFERENCES `groups` (`id`)
+  FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE,
+  FOREIGN KEY (`group_id`) REFERENCES `groups` (`id`) ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS `categories` (

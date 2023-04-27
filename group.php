@@ -10,7 +10,7 @@
 <body>
     <div class="container">
         <?php
-        ini_set('display_errors', 'on');
+        // ini_set('display_errors', 'on');
                 
         include 'config.php';
 
@@ -18,15 +18,11 @@
             $sql = <<<QUERY
                 SELECT m.id message_id, m.message, m.post_date, u.name, u.id user_id FROM `messages` m
                 INNER JOIN `users` u ON m.`user_id` = u.`id`
-                WHERE m.`group_id` = ?
+                WHERE m.`group_id` = {$_GET['id']}
             QUERY;
-            $stmt = $con->prepare($sql);
-            $stmt->bind_param("i", $_GET['id']);
-            $stmt->execute();
-            $result = $stmt->get_result();
+            $result = $con->query($sql);
             $res = $result->fetch_all(MYSQLI_ASSOC);
 
-            $stmt->close();
             $con->close();
         } else {
             die("Group id is not provided");
