@@ -18,7 +18,9 @@
         include 'config.php';
 
         if(isset($_GET['id'])) {
-            $group_name = $con->query("SELECT name FROM `groups` WHERE `id` = {$_GET['id']}")->fetch_assoc()["name"];
+            $res = $con->query("SELECT * FROM `groups` WHERE `id` = {$_GET['id']}")->fetch_assoc();
+            $group_id = $res["id"];
+            $group_name = $res["name"];
 
             $sql = <<<QUERY
                 SELECT m.id message_id, m.message, m.post_date, u.name, u.id user_id, g.name group_name FROM `messages` m
@@ -26,8 +28,8 @@
                 INNER JOIN `groups` g ON m.`group_id` = g.`id`
                 WHERE m.`group_id` = {$_GET['id']}
             QUERY;
-            $result = $con->query($sql);
-            $res = $result->fetch_all(MYSQLI_ASSOC);
+
+            $res = $con->query($sql)->fetch_all(MYSQLI_ASSOC);
 
             $con->close();
         } else {
@@ -45,12 +47,13 @@
             <?php endforeach ?>
             <div class="new-message">
                 <form action="newmessage.php" method="POST" class="post-message">
+                    <input type="text" name="group-id" value="<?= $group_id ?>" hidden>
                     <?php if (isset($_SESSION["isLoggedIn"])) : ?>
                         <input type="text" name="message" placeholder="Send a message">
-                        <input type="submit" value="Send">
+                        <input type="submit" name="submit" value="Send">
                     <?php else : ?>
                         <input type="text" name="message" placeholder="Login to send message" disabled>
-                        <input type="submit" value="Send" disabled>
+                        <input type="submit" name="submit" value="Send" disabled>
                     <?php endif ?>
                 </form>
             </div>

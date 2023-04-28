@@ -5,7 +5,7 @@
             <div>
                 <span>Logged in as @<?= $_SESSION['username'] ?></span>
                 <form action="logout.php" method="POST">
-                    <input type="submit" name="submit" value="Logout">
+                    <button type="submit" name="submit">Logout</button>
                 </form>
             </div>
         <?php else: ?>
@@ -13,9 +13,9 @@
                 <form action="login.php" method="POST">
                     <input type="text" name="username" placeholder="Username">
                     <input type="password" name="password" placeholder="Password">
-                    <input type="submit" name="submit" value="Login">
+                    <button type="submit" name="submit">Login</button>
                 </form>
-                <a href="register.php">Registration</a>
+                <a href="register.php" target="_blank">Registration</a>
             </div>
         <?php endif ?>
     </div>

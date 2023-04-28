@@ -10,6 +10,40 @@ body {
 }
 
 /* INDEX PAGE STYLES */
+.groups-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #0f537a;
+    margin: 10px 0;
+    border-radius: 10px;
+    padding: 0 15px;
+    color: #7dcfff;
+}
+
+.groups-header button {
+    background-color: #7dcfff;
+    font-size: 15px;
+    color: #0c3953;
+    border: none;
+    padding: 8px 10px;
+    border-radius: 5px;
+}
+
+.groups-header button:hover {
+    cursor: pointer;
+    background-color: #51a2d1;
+}
+
+.groups-header input {
+    padding: 7px 10px;
+    border: 2px solid #51a2d1;
+    border-radius: 5px;
+    background-color: #0f537a;
+    color: #aae0ff;
+    outline: none;
+}
+
 .groups {
     background-color: #ffd5d5;
     border-radius: 10px;
@@ -72,7 +106,7 @@ img {
 /* MESSAGES PAGE STYLES */
 .messages {
     position: relative;
-    height: 400px;
+    height: 700px;
     overflow-y: scroll;
     background-color: #ffd5d5;
     border-radius: 10px;
@@ -83,6 +117,7 @@ img {
 
 .message {
     background-color: #bb3f3f;
+    max-width: 60%;
     color: #fff;
     display: inline-block;
     margin-bottom: 15px;
@@ -135,4 +170,18 @@ header input {
     border-radius: 5px;
     color: #ffc5c5;
     background-color: #7e2020;
+}
+
+header button {
+    margin-top: 2px;
+    background-color: #ffaaaa;
+    color: #682020;
+    border: none;
+    padding: 6px 10px;
+    border-radius: 5px;
+}
+
+header button:hover {
+    cursor: pointer;
+    background-color: #dd8686;
 }

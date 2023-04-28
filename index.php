@@ -26,7 +26,15 @@
             $con->close();
         ?>
 
-        <h2>TOPICS</h2>
+        <div class="groups-header">
+            <h2>GROUPS</h2>
+            <?php if (isset($_SESSION['isLoggedIn'])) : ?>
+                <form action="creategroup.php" method="POST">
+                    <input type="text" name="name" placeholder="Enter group name">
+                    <button type="submit" name="submit">New group</button>
+                </form>
+            <?php endif ?>
+        </div>
         <div class="groups">
             <?php foreach ($result as $row): ?>
             <a href="group.php?id=<?= $row['id']?>">
