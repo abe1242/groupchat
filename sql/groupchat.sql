@@ -23,8 +23,3 @@ CREATE TABLE IF NOT EXISTS `messages` (
   FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE,
   FOREIGN KEY (`group_id`) REFERENCES `groups` (`id`) ON DELETE CASCADE
 );
-
-CREATE TABLE IF NOT EXISTS `categories` (
-  `id` int NOT NULL PRIMARY KEY AUTO_INCREMENT,
-  `name` varchar(255) NOT NULL UNIQUE
-);
