@@ -1,12 +1,15 @@
+<?php session_start(); ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Home</title>
+    <link rel="stylesheet" href="style/index.css">
 </head>
 <body>
+    <?php include "header.php" ?>
     <div class="container">
         <?php
             // ini_set('display_errors', 'on');
@@ -23,8 +26,6 @@
             $con->close();
         ?>
 
-        <?php include "header.php" ?>
-
         <h2>TOPICS</h2>
         <div class="groups">
             <?php foreach ($result as $row): ?>
@@ -36,7 +37,9 @@
                         </span>
                         <span class="group-name"><?= $row['name'] ?></span>
                     </div>
-                    <a href="deletegroup.php?id=<?= $row['id'] ?>"><button>Delete</button></a>
+                    <?php if (isset($_SESSION['isLoggedIn'])) : ?>
+                        <a href="deletegroup.php?id=<?= $row['id'] ?>"><button>Delete</button></a>
+                    <?php endif ?>
                 </div>
             </a>
             <?php endforeach ?>

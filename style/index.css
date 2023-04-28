@@ -1,6 +1,7 @@
 body {
     background-color: #bb3f3f;
     font-family: 'Ubuntu';
+    margin: 0;
 }
 
 .container {
@@ -18,7 +19,7 @@ body {
     margin-bottom: 100px;
 }
 
-a {
+.groups a {
     color: inherit;
     text-decoration: none;
 }
@@ -110,8 +111,28 @@ img {
 
 /* HEADER STYLE */
 header {
+    background-color: #8d2e2e;
+    color: #fca5a5;
+}
+
+header .container {
+    margin: 0 auto;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+}
+
+header a {
+    font-size: 12px;
+    color: #55d1fa;
+}
+
+header input {
+    padding: 5px;
+    outline: none;
+    border: 2px solid #ce6161;
+    border-radius: 5px;
+    color: #ffc5c5;
+    background-color: #7e2020;
 }

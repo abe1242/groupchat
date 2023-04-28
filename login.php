@@ -1,23 +1,25 @@
 <?php
+    session_start();
+
     ini_set('display_errors', 'on');
 
     if(isset($_POST["submit"])) {
-        $username =  $_POST['username'];
-        $password = $_POST['password'];
+        $uname =  $_POST['username'];
+        $passwd = $_POST['password'];
 
         include "config.php";
         
         $sql = <<<QUERY
-            SELECT * FROM `users` WHERE `username`='$username'
+            SELECT * FROM `users` WHERE `username`='$uname'
         QUERY;
 
         $result = $con->query($sql)->fetch_assoc();
 
-        echo var_dump($con->affected_rows);
-        if ($con->affected_rows == 1 && $result['passwd'] == $password) {
+        if ($result && $result['passwd'] == $passwd) {
             $_SESSION["userid"] = $result['id'];
-            $_SESSION["username"] = $username;
-            header("Location: index.php");
+            $_SESSION["username"] = $uname;
+            $_SESSION["isLoggedIn"] = "true";
+            header('Location: ' . $_SERVER['HTTP_REFERER']);
         } else {
             die("You have entered wrong username or password");
         }
