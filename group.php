@@ -8,6 +8,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Group</title>
     <link rel="stylesheet" href="style/index.css">
+    <style>
+        .message.<?= $_SESSION['username'] ?> .message-author {
+            color: #cff3ff;
+            background: #2a76b9;
+        }
+        .message.<?= $_SESSION['username'] ?> .message-text {
+            color: #b8eeff;
+            background: #0e5b9f;
+        }
+    </style>
 </head>
 <body>
     <?php include "header.php" ?>
@@ -23,7 +33,7 @@
             $group_name = $res["name"];
 
             $sql = <<<QUERY
-                SELECT m.id message_id, m.message, m.post_date, u.name, u.id user_id, g.name group_name FROM `messages` m
+                SELECT m.id message_id, m.message, m.post_date, u.name, u.username, u.id user_id, g.name group_name FROM `messages` m
                 INNER JOIN `users` u ON m.`user_id` = u.`id`
                 INNER JOIN `groups` g ON m.`group_id` = g.`id`
                 WHERE m.`group_id` = {$_GET['id']}
@@ -40,7 +50,7 @@
         <h2><?= $group_name ?></h2>
         <div class="messages">
             <?php foreach ($res as $row): ?>
-                <div class="message">
+                <div class="message <?= $row['username'] ?>">
                     <div class="message-author"><?= $row['name'] ?></div>
                     <div class="message-text"><?= $row['message'] ?></div>
                 </div><br>

@@ -26,6 +26,10 @@
             $con->close();
         ?>
 
+        <div class="info-box">
+            <div class="info-text">This is a message</div>
+            <div class="info-delete">X</div>
+        </div>
         <div class="groups-header">
             <h2>GROUPS</h2>
             <?php if (isset($_SESSION['isLoggedIn'])) : ?>
@@ -45,7 +49,7 @@
                         </span>
                         <span class="group-name"><?= $row['name'] ?></span>
                     </div>
-                    <?php if (isset($_SESSION['isLoggedIn'])) : ?>
+                    <?php if ($_SESSION['username'] == $row['username']) : ?>
                         <a href="deletegroup.php?id=<?= $row['id'] ?>"><button>Delete</button></a>
                     <?php endif ?>
                 </div>
