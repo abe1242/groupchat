@@ -22,6 +22,12 @@ body {
 
 .info-delete {
     color: #a87007;
+    font-size: 22px;
+}
+
+.info-delete:hover {
+    cursor: pointer;
+    color: #6d4804;
 }
 
 /* INDEX PAGE STYLES */
@@ -114,8 +120,17 @@ img {
     font-size: 20px;
 }
 
-.group-owner {
-    color: #4e4e4e;
+#delete-group {
+    border: none;
+    color: white;
+    background-color: #d34242;
+    padding: 6px 8px;
+    border-radius: 5px;
+}
+
+#delete-group:hover {
+    cursor: pointer;
+    background-color: #962e2e;
 }
 
 /* MESSAGES PAGE STYLES */

@@ -1,8 +1,6 @@
 <?php
     session_start();
 
-    ini_set('display_errors', 'on');
-
     if(isset($_POST["submit"])) {
         $uname =  $_POST['username'];
         $passwd = $_POST['password'];

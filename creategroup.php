@@ -9,10 +9,10 @@
 
         $sql = "INSERT INTO `groups`(`name`, `user_id`) VALUES('$groupname', $userid)";
 
-        if ($con->query($sql))
-            header('Location: ' . $_SERVER['HTTP_REFERER']);
-        else
-            echo "Error: Could not create group";
+        if ($groupname == "" || !$con->query($sql))
+            $_SESSION['message'] = "Error: Could not create group";
+
+        header('Location: ' . $_SERVER['HTTP_REFERER']);
 
         $con->close();
     }

@@ -8,6 +8,8 @@
 </head>
 <body>
     <?php
+        session_start();
+
         include "config.php";
 
         if(isset($_GET['id'])) {
@@ -18,9 +20,11 @@
 
             $con->query($sql);
             if ($con->affected_rows)
-                echo "Group deleted successfully";
+                $_SESSION['message'] = "Group deleted successfully";
             else
-                die("Error: Group does not exist");
+                $_SESSION['message'] = "Error: Group does not exist";
+            
+            header('Location: ' . $_SERVER['HTTP_REFERER']);
 
             $con->close();
         } else {

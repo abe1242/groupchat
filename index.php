@@ -26,10 +26,16 @@
             $con->close();
         ?>
 
-        <div class="info-box">
-            <div class="info-text">This is a message</div>
-            <div class="info-delete">X</div>
-        </div>
+        <?php if(isset($_SESSION['message'])): ?>
+            <div class="info-box">
+                <div class="info-text">
+                    <?= $_SESSION['message'] ?>
+                </div>
+                <div class="info-delete">×</div>
+            </div>
+            <?php unset($_SESSION['message']); ?>
+        <?php endif ?>
+        
         <div class="groups-header">
             <h2>GROUPS</h2>
             <?php if (isset($_SESSION['isLoggedIn'])) : ?>
@@ -50,12 +56,19 @@
                         <span class="group-name"><?= $row['name'] ?></span>
                     </div>
                     <?php if ($_SESSION['username'] == $row['username']) : ?>
-                        <a href="deletegroup.php?id=<?= $row['id'] ?>"><button>Delete</button></a>
+                        <a href="deletegroup.php?id=<?= $row['id'] ?>"><button id="delete-group">Delete</button></a>
                     <?php endif ?>
                 </div>
             </a>
             <?php endforeach ?>
         </div>
     </div>
+
+    <script>
+        var infoBox = document.querySelector('.info-box');
+        var deleteBtn = document.querySelector('.info-delete');
+
+        deleteBtn.addEventListener("click", (e) => {infoBox.remove()});
+    </script>
 </body>
 </html>
