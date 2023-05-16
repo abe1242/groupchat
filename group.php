@@ -9,13 +9,9 @@
     <title>Group</title>
     <link rel="stylesheet" href="style/index.css">
     <style>
-        .message.<?= $_SESSION['username'] ?> .message-author {
-            color: #cff3ff;
-            background: #2a76b9;
-        }
         .message.<?= $_SESSION['username'] ?> .message-text {
-            color: #b8eeff;
-            background: #0e5b9f;
+            color: black;
+            background: #e8ffec;
         }
     </style>
 </head>
@@ -37,6 +33,7 @@
                 INNER JOIN `users` u ON m.`user_id` = u.`id`
                 INNER JOIN `groups` g ON m.`group_id` = g.`id`
                 WHERE m.`group_id` = {$_GET['id']}
+                ORDER BY m.post_date
             QUERY;
 
             $res = $con->query($sql)->fetch_all(MYSQLI_ASSOC);
@@ -51,7 +48,9 @@
         <div class="messages">
             <?php foreach ($res as $row): ?>
                 <div class="message <?= $row['username'] ?>">
-                    <div class="message-author"><?= $row['name'] ?></div>
+                    <?php if (!(isset($_SESSION["isLoggedIn"]) && $_SESSION["username"] == $row['username'])) : ?>
+                        <div class="message-author"><?= $row['name'] ?></div>
+                    <?php endif ?>
                     <div class="message-text"><?= $row['message'] ?></div>
                 </div><br>
             <?php endforeach ?>
@@ -59,11 +58,11 @@
                 <form action="newmessage.php" method="POST" class="post-message">
                     <input type="text" name="group-id" value="<?= $group_id ?>" hidden>
                     <?php if (isset($_SESSION["isLoggedIn"])) : ?>
-                        <input type="text" name="message" placeholder="Send a message">
-                        <input type="submit" name="submit" value="Send">
+                        <input type="text" name="message" id="input-message" placeholder="Message">
+                        <input type="submit" name="submit" id="send-message" value="">
                     <?php else : ?>
                         <input type="text" name="message" placeholder="Login to send message" disabled>
-                        <input type="submit" name="submit" value="Send" disabled>
+                        <input type="submit" name="submit" value="" id="send-message" disabled>
                     <?php endif ?>
                 </form>
             </div>
